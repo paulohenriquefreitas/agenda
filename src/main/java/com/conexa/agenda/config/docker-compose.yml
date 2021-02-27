@@ -1,0 +1,22 @@
+version: "2.2"
+services:
+  database:
+    image: mysql:5.7
+    restart: always
+    ports:
+      - "3306:3306"
+    command: --lower_case_table_names=1
+    volumes:
+      - mysql-data:/var/lib/mysql
+    environment:
+      MYSQL_USER: 'root'
+      MYSQL_ROOT_USER: 'root'
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_PASSWORD: 'root'
+      MYSQL_DATABASE: agendas
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 5s
+      retries: 30
+volumes:
+  mysql-data:
