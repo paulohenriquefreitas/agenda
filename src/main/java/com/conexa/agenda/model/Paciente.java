@@ -1,5 +1,6 @@
 package com.conexa.agenda.model;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,6 +9,7 @@ import java.io.Serializable;
 
 @Getter
 @Setter
+@Builder
 @Entity
 @Table(name="paciente")
 public class Paciente implements Serializable {
@@ -24,4 +26,5 @@ public class Paciente implements Serializable {
     private Integer idade;
     @Column(name="telefone")
     private String telefone;
+
 }

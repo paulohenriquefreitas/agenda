@@ -28,7 +28,7 @@ public class PacienteController {
     public ResponseEntity<Paciente> save(@RequestBody Paciente paciente) {
         pacienteService.save(paciente);
 
-        return new ResponseEntity<Paciente>(paciente , HttpStatus.OK);
+        return new ResponseEntity<Paciente>(paciente , HttpStatus.CREATED);
     }
 
     @PutMapping(value = "/update",produces = "application/json")
