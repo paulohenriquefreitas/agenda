@@ -1,6 +1,7 @@
 package com.conexa.agenda.service;
 
 import com.conexa.agenda.model.Paciente;
+import org.springframework.http.HttpStatus;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,6 +12,6 @@ public interface PacienteService {
     Paciente save(Paciente paciente);
     Paciente update(Paciente paciente);
     Optional<Paciente> getById(String pacienteId);
-    String delete(String pacienteId);
+    HttpStatus delete(String pacienteId);
 
 }

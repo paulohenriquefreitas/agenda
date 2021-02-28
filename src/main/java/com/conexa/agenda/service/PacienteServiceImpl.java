@@ -3,6 +3,8 @@ package com.conexa.agenda.service;
 import com.conexa.agenda.model.Paciente;
 import com.conexa.agenda.repository.PacienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,17 +19,25 @@ public class PacienteServiceImpl implements PacienteService {
     @Override
     public List<Paciente> getAll() {
         return pacienteRepository.findAll();
-
     }
 
     @Override
     public Paciente save(Paciente paciente) {
+        try {
         return pacienteRepository.save(paciente);
+        }catch (Exception ex) {
+            return null;
+        }
     }
 
     @Override
     public Paciente update(Paciente paciente) {
-        return pacienteRepository.saveAndFlush(paciente);
+        try {
+            return pacienteRepository.saveAndFlush(paciente);
+        }catch (Exception ex) {
+            return null;
+        }
+
     }
 
     @Override
@@ -36,8 +46,14 @@ public class PacienteServiceImpl implements PacienteService {
     }
 
     @Override
-    public String delete(String pacienteId) {
-        pacienteRepository.deleteById(Integer.valueOf(pacienteId));
-        return null;
+    public HttpStatus delete(String pacienteId) {
+        try {
+            pacienteRepository.deleteById(Integer.valueOf(pacienteId));
+            return HttpStatus.OK;
+        }catch (EmptyResultDataAccessException ex) {
+            return HttpStatus.NOT_FOUND;
+        }catch (Exception ex) {
+            return HttpStatus.INTERNAL_SERVER_ERROR;
+        }
     }
 }

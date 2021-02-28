@@ -26,16 +26,21 @@ public class PacienteController {
 
     @PostMapping(value = "/save",produces = "application/json")
     public ResponseEntity<Paciente> save(@RequestBody Paciente paciente) {
-        pacienteService.save(paciente);
+        Paciente pct = pacienteService.save(paciente);
+        if(pct == null) {
+            return new ResponseEntity<Paciente>(paciente, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return new ResponseEntity<Paciente>(paciente, HttpStatus.CREATED);
 
-        return new ResponseEntity<Paciente>(paciente , HttpStatus.CREATED);
     }
 
     @PutMapping(value = "/update",produces = "application/json")
     public ResponseEntity<Paciente> update(@RequestBody Paciente paciente) {
-        pacienteService.update(paciente);
-
-        return new ResponseEntity<Paciente>(paciente , HttpStatus.OK);
+        Paciente pct = pacienteService.update(paciente);
+        if(pct == null) {
+            return new ResponseEntity<Paciente>(pct, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return new ResponseEntity<Paciente>(pct , HttpStatus.OK);
     }
 
     @RequestMapping(value = "/{id}",method = RequestMethod.GET, produces = "application/json")
@@ -51,10 +56,12 @@ public class PacienteController {
 
     @DeleteMapping(value = "/{id}", produces = "application/json")
     public ResponseEntity<String> delete(@PathVariable String id) {
-      pacienteService.delete(id);
+        HttpStatus statusCode = pacienteService.delete(id);
+        if(statusCode != HttpStatus.OK) {
+            return new ResponseEntity<String>(statusCode);
+        }
         return new ResponseEntity<String>("Deletado com Sucesso" , HttpStatus.OK);
     }
-
 }
 
 

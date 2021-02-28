@@ -1,15 +1,16 @@
 package com.conexa.agenda.model;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Getter
 @Setter
+@Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name="paciente")
 public class Paciente implements Serializable {

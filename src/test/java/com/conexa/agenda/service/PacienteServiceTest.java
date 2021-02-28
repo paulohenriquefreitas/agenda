@@ -1,6 +1,5 @@
 package com.conexa.agenda.service;
 
-import com.conexa.agenda.controller.PacienteController;
 import com.conexa.agenda.mock.PacienteMock;
 import com.conexa.agenda.model.Paciente;
 import com.conexa.agenda.repository.PacienteRepository;
@@ -14,7 +13,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.http.HttpStatus;
 
 import java.util.Arrays;
 

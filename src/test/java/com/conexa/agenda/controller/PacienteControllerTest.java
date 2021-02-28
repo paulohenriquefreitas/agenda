@@ -17,7 +17,7 @@ import org.springframework.http.HttpStatus;
 
 import java.util.Arrays;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -46,6 +46,15 @@ public class PacienteControllerTest {
         assertEquals(HttpStatus.CREATED, pacienteController.save(paciente).getStatusCode());
     }
 
+    @DisplayName("Teste de salvar paciente com erro")
+    @Test
+    void test_save_error() {
+        paciente = PacienteMock.setPaciente("Paulo", "5829482984", 25, "113134144");
+        when(pacienteServiceImpl.save(paciente)).thenReturn(null);
+        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, pacienteController.save(paciente).getStatusCode());
+    }
+
+
     @DisplayName("Teste de buscar todos os pacientes")
     @Test
     void test_getAll_success() {
@@ -72,6 +81,14 @@ public class PacienteControllerTest {
         when(pacienteServiceImpl.update(paciente)).thenReturn(paciente);
         assertEquals(HttpStatus.OK, pacienteController.update(paciente).getStatusCode());
         assertEquals("Jose", pacienteController.update(paciente).getBody().getNome());
+    }
+
+    @DisplayName("Atualizar um paciente com erro")
+    @Test
+    void test_update_error() {
+        paciente = PacienteMock.setPaciente("Jose", "5829482984", 25, "113134144");
+        when(pacienteServiceImpl.update(paciente)).thenReturn(null);
+        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, pacienteController.update(paciente).getStatusCode());
     }
 
     @DisplayName("Deletar um paciente")
