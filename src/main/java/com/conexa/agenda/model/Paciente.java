@@ -1,18 +1,13 @@
 package com.conexa.agenda.model;
 
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Getter
 @Setter
-@EqualsAndHashCode
-@Builder
 @Entity
 @Table(name="paciente")
 public class Paciente implements Serializable {
@@ -20,10 +15,13 @@ public class Paciente implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    @Column(name="paciente_id")
-    private int pacienteId;
+    private Integer id;
+    @Column(name="nome")
     private String nome;
+    @Column(name="cpf")
     private String cpf;
+    @Column(name="idade")
     private Integer idade;
+    @Column(name="telefone")
     private String telefone;
 }

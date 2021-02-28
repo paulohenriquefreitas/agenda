@@ -1,14 +1,12 @@
 package com.conexa.agenda.model;
 
+
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.List;
 
 @Getter
 @Setter
@@ -16,17 +14,14 @@ import java.util.List;
 @Builder
 @Entity
 @Table(name="medico")
-public class Medico implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class Medico {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    @Column(name="medico_id")
-    private int medicoId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     public String token;
-    @Column(name="nome")
+    @Column(name = "nome")
     public String nome;
-    @Column(name="especialidade")
+    @Column(name = "especialidade")
     public String especialidade;
-    public List<Agendamento> agendamentos_hoje;
+
 }
