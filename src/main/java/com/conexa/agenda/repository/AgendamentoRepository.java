@@ -1,9 +1,11 @@
 package com.conexa.agenda.repository;
 
-import com.conexa.agenda.model.Paciente;
+
+import com.conexa.agenda.model.Agendamento;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PacienteRepository extends JpaRepository<Paciente, Long> {
+public interface AgendamentoRepository extends JpaRepository<Agendamento, Long> {
 }
+

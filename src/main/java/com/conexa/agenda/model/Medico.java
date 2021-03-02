@@ -1,15 +1,18 @@
 package com.conexa.agenda.model;
 
 
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @EqualsAndHashCode
 @Builder
 @Entity
@@ -23,5 +26,10 @@ public class Medico {
     public String nome;
     @Column(name = "especialidade")
     public String especialidade;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = false,
+            mappedBy = "medico")
+    List<Agendamento> agendamentos;
+
 
 }

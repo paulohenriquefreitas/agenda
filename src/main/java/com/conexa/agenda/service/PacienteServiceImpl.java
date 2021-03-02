@@ -42,13 +42,13 @@ public class PacienteServiceImpl implements PacienteService {
 
     @Override
     public Optional<Paciente> getById(String pacienteId) {
-        return pacienteRepository.findById(Integer.valueOf(pacienteId));
+        return pacienteRepository.findById(Long.valueOf(pacienteId));
     }
 
     @Override
     public HttpStatus delete(String pacienteId) {
         try {
-            pacienteRepository.deleteById(Integer.valueOf(pacienteId));
+            pacienteRepository.deleteById(Long.valueOf(pacienteId));
             return HttpStatus.OK;
         }catch (EmptyResultDataAccessException ex) {
             return HttpStatus.NOT_FOUND;

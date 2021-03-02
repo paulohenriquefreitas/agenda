@@ -57,8 +57,8 @@ public class PacienteServiceTest {
     @Test
     void test_getPacienteById_success() {
         paciente = PacienteMock.setPaciente("Paulo", "5829482984", 25, "113134144");
-        when(pacienteRepository.findById(1)).thenReturn(java.util.Optional.of(paciente));
-        assertEquals("Paulo", pacienteRepository.findById(1).get().getNome());
+        when(pacienteRepository.findById(1L)).thenReturn(java.util.Optional.of(paciente));
+        assertEquals("Paulo", pacienteRepository.findById(1L).get().getNome());
     }
 
     @DisplayName("Atualizar um paciente")

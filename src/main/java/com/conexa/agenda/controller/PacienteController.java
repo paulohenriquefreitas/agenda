@@ -1,8 +1,11 @@
 package com.conexa.agenda.controller;
 
+import com.conexa.agenda.dto.AgendamentoDTO;
+import com.conexa.agenda.dto.CustomResponseDto;
 import com.conexa.agenda.model.Paciente;
 import com.conexa.agenda.service.PacienteService;
 import com.conexa.agenda.service.PacienteServiceImpl;
+import com.conexa.agenda.util.CustomResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +21,9 @@ public class PacienteController {
 
     @Autowired
     private PacienteServiceImpl pacienteService;
+
+    @Autowired
+    private CustomResponse customResponse;
 
     @RequestMapping(value = "/",method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<List<Paciente>> gelAll() {
@@ -55,12 +61,13 @@ public class PacienteController {
     }
 
     @DeleteMapping(value = "/{id}", produces = "application/json")
-    public ResponseEntity<String> delete(@PathVariable String id) {
+    public ResponseEntity<CustomResponseDto> delete(@PathVariable String id) {
         HttpStatus statusCode = pacienteService.delete(id);
         if(statusCode != HttpStatus.OK) {
-            return new ResponseEntity<String>(statusCode);
+            return new ResponseEntity<CustomResponseDto>(customResponse.getCustomResponseDto("Erro ao deletar paciente.",statusCode), statusCode);
         }
-        return new ResponseEntity<String>("Deletado com Sucesso" , HttpStatus.OK);
+        return new ResponseEntity<CustomResponseDto>(customResponse.getCustomResponseDto(
+                "Paciente deletado com sucesso.", HttpStatus.OK), HttpStatus.OK);
     }
 }
 

@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Getter
 @Setter
@@ -18,7 +19,7 @@ public class Paciente implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private Integer id;
+    private Long id;
     @Column(name="nome")
     private String nome;
     @Column(name="cpf")
@@ -27,5 +28,6 @@ public class Paciente implements Serializable {
     private Integer idade;
     @Column(name="telefone")
     private String telefone;
+
 
 }
