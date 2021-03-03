@@ -1,7 +1,9 @@
 package com.conexa.agenda.security;
 
 import com.conexa.agenda.exception.CustomException;
+import com.conexa.agenda.model.Medico;
 import com.conexa.agenda.model.Role;
+import com.conexa.agenda.repository.MedicoRepository;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
@@ -38,6 +40,9 @@ public class JwtTokenProvider {
 
   @Autowired
   private MyUserDetails myUserDetails;
+
+  @Autowired
+  private MedicoRepository medicoRepository;
 
   @PostConstruct
   protected void init() {
@@ -79,6 +84,10 @@ public class JwtTokenProvider {
 
   public boolean validateToken(String token) {
     try {
+      Medico medico = medicoRepository.findByToken(token);
+      if(medico == null) {
+        return false;
+      }
       Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token);
       return true;
     } catch (JwtException | IllegalArgumentException e) {

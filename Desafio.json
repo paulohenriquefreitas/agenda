@@ -1,0 +1,241 @@
+{
+	"info": {
+		"_postman_id": "4be476f0-ed85-4fd9-b448-a19377e36121",
+		"name": "Desafio",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Listar paciente por id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/paciente/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"paciente",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Salvar Paciente",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \n    \"nome\": \"Antonio\",\n    \"cpf\": \"70556855445\",\n    \"idade\": 40,\n    \"telefone\": \"564565656546\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/paciente/save",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"paciente",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar paciente por id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/paciente/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"paciente",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Atualizar dados do paciente",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n     \"id\": 1,\n    \"nome\": \"Jose Antonio de Paulo\",\n    \"cpf\": \"70556855445\",\n    \"idade\": 40,\n    \"telefone\": \"564565656546\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/paciente/update",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"paciente",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deletar paciente por id",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nome\": \"Jose Antonio\",\n    \"cpf\": \"705568545\",\n    \"idade\": 20,\n    \"telefone\": \"56456546\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/paciente/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"paciente",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fazer login e obter a lista de agendamento da dia corrente",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJEcmF1emlvIiwiYXV0aCI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9XSwiaWF0IjoxNjE0NzA4MDE2LCJleHAiOjE2MTQ3MTE2MTZ9.jaD_gdbkatkm5b241URuTKniR9RtHc5iWI0mdhkHTR8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"username\": \"Drauzio\",\n  \"password\": \"@agenda2021\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/users/signin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Salvar um agendamento ",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJEcmF1emlvIiwiYXV0aCI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9XSwiaWF0IjoxNjE0NzQ1MzU1LCJleHAiOjE2MTQ3NDg5NTV9.VQMDPcNzcg3iJz-77lFubVZXF7dBTcLwcl1QjRsJcUk",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"data_hora_atendimento\": \"2021-03-03 22:00:00\",\n  \"id_paciente\": 2\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/medico/save",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"medico",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fazer logoff",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJEcmF1emlvIiwiYXV0aCI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9XSwiaWF0IjoxNjE0NzQ2NjAwLCJleHAiOjE2MTQ3NTAyMDB9.c8ufc2HgjpZjRB-nKPYIcezyVUGK6IgwdXGLokJeCp8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"username\": \"Drauzio\",\n  \"password\": \"@agenda2021\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/users/logoff?token=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJEcmF1emlvIiwiYXV0aCI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9XSwiaWF0IjoxNjE0NzQ2NjAwLCJleHAiOjE2MTQ3NTAyMDB9.c8ufc2HgjpZjRB-nKPYIcezyVUGK6IgwdXGLokJeCp8",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"logoff"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJEcmF1emlvIiwiYXV0aCI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9XSwiaWF0IjoxNjE0NzQ2NjAwLCJleHAiOjE2MTQ3NTAyMDB9.c8ufc2HgjpZjRB-nKPYIcezyVUGK6IgwdXGLokJeCp8"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

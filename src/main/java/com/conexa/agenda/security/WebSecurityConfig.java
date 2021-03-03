@@ -32,7 +32,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .antMatchers("/paciente/*").permitAll()
         .antMatchers("/users/signin").permitAll()
         .antMatchers("/users/logoff").permitAll()
-        .antMatchers("/h2-console/**/**").permitAll()
         .anyRequest().authenticated();
 
     http.exceptionHandling().accessDeniedPage("/login");
